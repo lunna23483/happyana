@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Cumple Ana María Ortiz Acevedo 🎉</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    text-align: center;
+  }
+
+  .card {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, #ff6bcb, #7c3aed, #ffdd57);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    animation: floatTitle 3s ease-in-out infinite, shine 2.5s linear infinite;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin-top: 0;
+    line-height: 1.4;
+  }
+
+  .video-box {
+    margin-top: 15px;
+  }
+
+  iframe.background-video {
+    width: 100%;
+    max-width: 350px;
+    height: 200px;
+    border-radius: 10px;
+    border: none;
+  }
+
+  .emoji {
+    font-size: 4rem;
+    animation: flotar 3s ease-in-out infinite;
+    z-index: 20;
+    margin-bottom: 10px;
+  }
+
+  @keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  @keyframes floatTitle {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes shine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+
+  /* Confeti */
+  .confite-area {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 5;
+  }
+
+  .confite {
+    position: absolute;
+    font-size: 26px;
+    opacity: 0;
+    animation: caer linear forwards;
+  }
+
+  @keyframes caer {
+    0% { transform: translateY(-20vh) rotate(0deg); opacity:0; }
+    5% { opacity:1; }
+    100% { transform: translateY(120vh) rotate(720deg); opacity:1; }
+  }
+
+</style>
+</head>
+
+<body>
+
+<div class="emoji">🎂</div>
+
+<div class="card">
+  <h1>¡Feliz Cumpleaños Ana María Ortiz Acevedo!</h1>
+  <p>Que tu día esté lleno de dulces, risas y alegría. 💖</p>
+
+  <div class="video-box">
+    <iframe class="background-video"
+      src="https://www.youtube.com/embed/PR1OFtHn1gQ?autoplay=1&loop=1&playlist=PR1OFtHn1gQ&controls=0&mute=0&modestbranding=1&rel=0"
+      allow="autoplay"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<div class="confite-area" id="confite-area"></div>
+
+<script>
+  const confiteArea = document.getElementById('confite-area');
+  const confites = ['🍬','🍭','🍫','🍡','🍪','🍩','🍰','🎈','✨','🎂'];
+
+  function random(min,max){return Math.random()*(max-min)+min;}
+
+  function createConfite(){
+    const el = document.createElement('div');
+    el.className='confite';
+    el.textContent = confites[Math.floor(random(0,confites.length))];
+    el.style.left = random(0,100)+'%';
+    el.style.fontSize = random(20,40)+'px';
+    el.style.animationDuration = random(4,8)+'s';
+    el.style.animationDelay = random(0,5)+'s';
+    confiteArea.appendChild(el);
+    setTimeout(()=>el.remove(), (parseFloat(el.style.animationDelay)+parseFloat(el.style.animationDuration))*1000+500);
+  }
+
+  setInterval(createConfite, 250);
+  for(let i=0;i<20;i++) setTimeout(createConfite, i*100);
+</script>
+
+</body>
+</html>
+
